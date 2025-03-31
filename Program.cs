@@ -6,7 +6,12 @@ namespace OldPhonePadToTextConverter
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Enter text and press '#' to process:");
+            Console.WriteLine("Instructions:");
+            Console.WriteLine("-> Valid numbers are from '1' to '9'");
+            Console.WriteLine("-> '*' is considered as 'BackSpace'");
+            Console.WriteLine("-> '#' is considered as 'Send' button");
+            Console.WriteLine("-> Press the '#' will generate the result");
+            Console.WriteLine("Enter your input: ");
 
             var input = string.Empty;
 
