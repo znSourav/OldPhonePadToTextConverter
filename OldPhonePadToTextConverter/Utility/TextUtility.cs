@@ -132,7 +132,7 @@ namespace OldPhonePadToTextConverter.Utility
         private static void ValidatePhoneNumberInput(string currentNumbers)
         {
             // Only valid character are number from 1 to 9, space, * and #.
-            if (!currentNumbers.All(n => n is >= '1' and <= '9' or ' ' or '*' or '#'))
+            if (string.IsNullOrEmpty(currentNumbers) || !currentNumbers.All(n => n is >= '1' and <= '9' or ' ' or '*' or '#'))
             {
                 throw new ServiceValidationBadRequestException("Input should only contain numbers from '1' to '9', 'space', '*' or '#'");
             }
