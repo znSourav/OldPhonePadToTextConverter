@@ -45,13 +45,13 @@ namespace OldPhonePadToTextConverter.Utility
                     characterCount++;
                     index++;
                 }
-                
+
                 // The numbers rotate in a circle.
                 // For example, if we press 4 times "2" the value will be "A" 
                 // which is equals to pressing "2" only one time.
-                // To determine this, we need this divisor. 
-                var divisor = GetDivisor(currentChar);
-                characterCount %= divisor;
+                // To determine this, we need to divide "charactersCount" by numbersNumberOfCharactersAssociatedWithKey.
+                var numbersNumberOfCharactersAssociatedWithKey = GetNumberOfCharactersAssociatedWithKey(currentChar);
+                characterCount %= numbersNumberOfCharactersAssociatedWithKey;
 
                 // Getting the "n-th" element from the list for the current number.
                 var letter = numberToLetterDictionary[currentChar].ElementAt(characterCount);
@@ -78,20 +78,11 @@ namespace OldPhonePadToTextConverter.Utility
 
         #region Private Methods
 
-        private static int GetDivisor(char keyPadNumber)
+        private static int GetNumberOfCharactersAssociatedWithKey(char keyPadNumber)
         {
             // For the key pad number 7 and 9, there are 4 characters.
-            // For this reason, the divisor is 4.
             // For the rest of the key pad numbers(2, 3, 4, 5, 6, 8), there are 3 characters.
-            // For this reason, the divisor is 3.
-            if (keyPadNumber is '7' or '9')
-            {
-                return 4;
-            }
-            else
-            {
-                return 3;
-            }
+            return keyPadNumber is '7' or '9' ? 4 : 3;
         }
 
         private static string ProcessOldPhoneNumberInput(string currentNumbers)
