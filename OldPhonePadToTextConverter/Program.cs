@@ -29,7 +29,7 @@ namespace OldPhonePadToTextConverter
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"An error occurred: {ex}");
+                        Console.WriteLine($"An error occurred: {ex.Message}");
                     }
                     finally
                     {
